@@ -23,4 +23,16 @@
 #ifndef _ISHIKO_CSV_CSVREADER_H_
 #define _ISHIKO_CSV_CSVREADER_H_
 
+namespace Ishiko
+{
+namespace
+{
+
+class CSVReader
+{
+};
+
+}
+}
+
 #endif

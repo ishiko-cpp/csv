@@ -21,10 +21,19 @@
 */
 
 #include "CSVReaderTests.h"
+#include "Ishiko/CSV/CSVReader.h"
 
 using namespace Ishiko::TestFramework;
 
 void CSVReaderTests::AddTests(TestHarness& theTestHarness)
 {
     TestSequence& readerTestSequence = theTestHarness.appendTestSequence("CSVReader tests");
+
+    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, readerTestSequence);
+}
+
+TestResult::EOutcome CSVReaderTests::CreationTest1()
+{
+    Ishiko::CSVReader reader;
+    return TestResult::ePassed;
 }

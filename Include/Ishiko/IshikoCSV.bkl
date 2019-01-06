@@ -1,0 +1,20 @@
+setting ISHIKO_CSV_ROOT
+{
+    help = "Path to the Ishiko CSV installation";
+    default = '$(ISHIKO)/CSV';
+}
+
+template IshikoCSV
+{
+    includedirs += $(ISHIKO_CSV_ROOT)/Include;
+
+    if ($(toolset) == gnu)
+    {
+       libdirs += $(ISHIKO_CSV_ROOT)/Lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        libdirs += $(ISHIKO_CSV_ROOT)/Lib/$(arch);
+    }
+}
