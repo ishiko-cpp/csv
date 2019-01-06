@@ -1,0 +1,24 @@
+toolsets = vs2017 vs2015 vs2013;
+
+vs2017.solutionfile = ../VC15/IshikoCSV.sln;
+vs2015.solutionfile = ../VC14/IshikoCSV.sln;
+vs2013.solutionfile = ../VC12/IshikoCSV.sln;
+
+library IshikoCSV
+{
+    archs = x86 x86_64;
+
+    includedirs += ../../Include/Ishiko/CSV;
+
+    outputdir = ../../Lib/$(arch);
+
+    if ($(config) == Debug)
+    {
+        basename = IshikoCSV-d;
+    }
+
+    headers
+    {
+        ../../Include/Ishiko/CSV/linkoptions.h
+    }
+}
