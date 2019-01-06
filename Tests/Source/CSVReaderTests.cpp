@@ -30,10 +30,21 @@ void CSVReaderTests::AddTests(TestHarness& theTestHarness)
     TestSequence& readerTestSequence = theTestHarness.appendTestSequence("CSVReader tests");
 
     new HeapAllocationErrorsTest("Creation test 1", CreationTest1, readerTestSequence);
+    new HeapAllocationErrorsTest("open test 1", OpenTest1, readerTestSequence);
 }
 
 TestResult::EOutcome CSVReaderTests::CreationTest1()
 {
-    Ishiko::CSVReader reader;
+    Ishiko::CSV::CSVReader reader;
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome CSVReaderTests::OpenTest1(Test& test)
+{
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "empty.csv");
+
+    Ishiko::CSV::CSVReader reader;
+    reader.open(inputPath);
+
     return TestResult::ePassed;
 }

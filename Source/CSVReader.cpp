@@ -21,3 +21,20 @@
 */
 
 #include "CSVReader.h"
+
+namespace Ishiko
+{
+namespace CSV
+{
+
+CSVReader::CSVReader()
+{
+}
+
+void CSVReader::open(const boost::filesystem::path& path)
+{
+    m_input.open(path.string());
+}
+
+}
+}

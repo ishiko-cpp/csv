@@ -29,6 +29,8 @@ int main(int argc, char* argv[])
 {
     TestHarness theTestHarness("IshikoCSV");
 
+    theTestHarness.environment().setTestDataDirectory("../../TestData");
+
     CSVReaderTests::AddTests(theTestHarness);
 
     return theTestHarness.run();

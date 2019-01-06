@@ -23,16 +23,28 @@
 #ifndef _ISHIKO_CSV_CSVREADER_H_
 #define _ISHIKO_CSV_CSVREADER_H_
 
+#include <boost/filesystem/path.hpp>
+#include <fstream>
+
 namespace Ishiko
 {
-namespace
+namespace CSV
 {
 
 class CSVReader
 {
+public:
+    CSVReader();
+
+    void open(const boost::filesystem::path& path);
+
+private:
+    std::ifstream m_input;
 };
 
 }
 }
+
+#include "linkoptions.h"
 
 #endif
