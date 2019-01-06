@@ -20,16 +20,15 @@
     IN THE SOFTWARE.
 */
 
-#include "CSVReaderTests.h"
+#ifndef _ISHIKO_CSV_TESTS_CSVREADERTESTS_H_
+#define _ISHIKO_CSV_TESTS_CSVREADERTESTS_H_
+
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
-
-int main(int argc, char* argv[])
+class CSVReaderTests
 {
-    TestHarness theTestHarness("IshikoCSV");
+public:
+    static void AddTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+};
 
-    CSVReaderTests::AddTests(theTestHarness);
-
-    return theTestHarness.run();
-}
+#endif

@@ -11,8 +11,14 @@ program IshikoCSVTests : IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 
+    headers
+    {
+        ../../Source/CSVReaderTests.h
+    }
+
     sources
     {
         ../../Source/main.cpp
+        ../../Source/CSVReaderTests.cpp
     }
 }

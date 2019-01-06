@@ -21,15 +21,10 @@
 */
 
 #include "CSVReaderTests.h"
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
 using namespace Ishiko::TestFramework;
 
-int main(int argc, char* argv[])
+void CSVReaderTests::AddTests(TestHarness& theTestHarness)
 {
-    TestHarness theTestHarness("IshikoCSV");
-
-    CSVReaderTests::AddTests(theTestHarness);
-
-    return theTestHarness.run();
+    TestSequence& readerTestSequence = theTestHarness.appendTestSequence("CSVReader tests");
 }
