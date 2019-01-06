@@ -19,6 +19,13 @@ library IshikoCSV
 
     headers
     {
+        ../../Include/Ishiko/CSV/CSVReader.h
+
         ../../Include/Ishiko/CSV/linkoptions.h
+    }
+
+    sources
+    {
+        ../../Source/CSVReader.cpp
     }
 }
