@@ -1,25 +1,27 @@
-ishikopath = envvar("ISHIKO");
-import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
-import $(ishikopath)/CSV/Include/Ishiko/IshikoCSV.bkl;
+ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/csv/include/Ishiko/CSV.bkl;
+import $(ishikopath)/tests/include/Ishiko/Tests/Core.bkl;
 
-toolsets = vs2017 vs2015 vs2013;
+toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 
-vs2017.solutionfile = ../VC15/IshikoCSVTests.sln;
-vs2015.solutionfile = ../VC14/IshikoCSVTests.sln;
-vs2013.solutionfile = ../VC12/IshikoCSVTests.sln;
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2019.solutionfile = ../vc16/IshikoCSVTests.sln;
+vs2017.solutionfile = ../vc15/IshikoCSVTests.sln;
+vs2015.solutionfile = ../vc14/IshikoCSVTests.sln;
+vs2013.solutionfile = ../vc12/IshikoCSVTests.sln;
 
-program IshikoCSVTests : IshikoCSV, IshikoTestFrameworkCore
+program IshikoCSVTests : IshikoCSV, IshikoTestsCore
 {
     archs = x86 x86_64;
 
     headers
     {
-        ../../Source/CSVReaderTests.h
+        ../../src/CSVReaderTests.h
     }
 
     sources
     {
-        ../../Source/main.cpp
-        ../../Source/CSVReaderTests.cpp
+        ../../src/main.cpp
+        ../../src/CSVReaderTests.cpp
     }
 }
