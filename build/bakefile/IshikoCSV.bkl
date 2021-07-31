@@ -1,8 +1,10 @@
-ishikopath = envvar("ISHIKO");
-import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Boost.bkl;
+ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
 
-toolsets = vs2017 vs2015 vs2013;
+toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2019.solutionfile = ../VC16/IshikoCSV.sln;
 vs2017.solutionfile = ../VC15/IshikoCSV.sln;
 vs2015.solutionfile = ../VC14/IshikoCSV.sln;
 vs2013.solutionfile = ../VC12/IshikoCSV.sln;
@@ -11,9 +13,9 @@ library IshikoCSV : Boost
 {
     archs = x86 x86_64;
 
-    includedirs += ../../Include/Ishiko/CSV;
+    includedirs += ../../include/Ishiko/CSV;
 
-    outputdir = ../../Lib/$(arch);
+    outputdir = ../../lib/$(arch);
 
     if ($(config) == Debug)
     {
@@ -22,13 +24,12 @@ library IshikoCSV : Boost
 
     headers
     {
-        ../../Include/Ishiko/CSV/CSVReader.h
-
-        ../../Include/Ishiko/CSV/linkoptions.h
+        ../../include/Ishiko/CSV/CSVReader.h
+        ../../include/Ishiko/CSV/linkoptions.h
     }
 
     sources
     {
-        ../../Source/CSVReader.cpp
+        ../../src/CSVReader.cpp
     }
 }
