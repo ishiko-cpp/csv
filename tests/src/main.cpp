@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2019 Xavier Leclercq
+    Copyright (c) 2019-2021 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -21,9 +21,9 @@
 */
 
 #include "CSVReaderTests.h"
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include <Ishiko/Tests/Core.h>
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
 int main(int argc, char* argv[])
 {
@@ -31,7 +31,8 @@ int main(int argc, char* argv[])
 
     theTestHarness.environment().setTestDataDirectory("../../TestData");
 
-    CSVReaderTests::AddTests(theTestHarness);
-
+    TestSequence& theTests = theTestHarness.tests();
+    theTests.append<CSVReaderTests>();
+    
     return theTestHarness.run();
 }
