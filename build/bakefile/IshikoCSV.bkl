@@ -4,10 +4,10 @@ import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
 toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 
 gnu.makefile = ../gnumake/GNUmakefile;
-vs2019.solutionfile = ../VC16/IshikoCSV.sln;
-vs2017.solutionfile = ../VC15/IshikoCSV.sln;
-vs2015.solutionfile = ../VC14/IshikoCSV.sln;
-vs2013.solutionfile = ../VC12/IshikoCSV.sln;
+vs2019.solutionfile = ../vc16/IshikoCSV.sln;
+vs2017.solutionfile = ../vc15/IshikoCSV.sln;
+vs2015.solutionfile = ../vc14/IshikoCSV.sln;
+vs2013.solutionfile = ../vc12/IshikoCSV.sln;
 
 library IshikoCSV : Boost
 {
@@ -15,7 +15,16 @@ library IshikoCSV : Boost
 
     includedirs += ../../include/Ishiko/CSV;
 
-    outputdir = ../../lib/$(arch);
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        outputdir = ../../lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        outputdir = ../../lib/$(arch);
+    }
 
     if ($(config) == Debug)
     {
