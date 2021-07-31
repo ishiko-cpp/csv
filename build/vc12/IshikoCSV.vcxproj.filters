@@ -17,15 +17,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Include\Ishiko\CSV\CSVReader.h">
+    <ClInclude Include="..\..\include\Ishiko\CSV\CSVReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Include\Ishiko\CSV\linkoptions.h">
+    <ClInclude Include="..\..\include\Ishiko\CSV\linkoptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\CSVReader.cpp">
+    <ClCompile Include="..\..\src\CSVReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

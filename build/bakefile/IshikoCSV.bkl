@@ -1,0 +1,44 @@
+ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
+
+toolsets = gnu vs2019 vs2017 vs2015 vs2013;
+
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2019.solutionfile = ../vc16/IshikoCSV.sln;
+vs2017.solutionfile = ../vc15/IshikoCSV.sln;
+vs2015.solutionfile = ../vc14/IshikoCSV.sln;
+vs2013.solutionfile = ../vc12/IshikoCSV.sln;
+
+library IshikoCSV : Boost
+{
+    archs = x86 x86_64;
+
+    includedirs += ../../include/Ishiko/CSV;
+
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        outputdir = ../../lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        outputdir = ../../lib/$(arch);
+    }
+
+    if ($(config) == Debug)
+    {
+        basename = IshikoCSV-d;
+    }
+
+    headers
+    {
+        ../../include/Ishiko/CSV/CSVReader.h
+        ../../include/Ishiko/CSV/linkoptions.h
+    }
+
+    sources
+    {
+        ../../src/CSVReader.cpp
+    }
+}
