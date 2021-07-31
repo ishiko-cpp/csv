@@ -14,6 +14,12 @@ program IshikoCSVTests : IshikoCSV, IshikoTestsCore
 {
     archs = x86 x86_64;
 
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        libs += IshikoCSV IshikoTestsCore IshikoProcess IshikoErrors boost_filesystem boost_system;
+    }
+
     headers
     {
         ../../src/CSVReaderTests.h
