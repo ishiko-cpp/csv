@@ -36,5 +36,9 @@ void CSVReader::open(const boost::filesystem::path& path)
     m_input.open(path.string());
 }
 
+void CSVReader::readLine()
+{
+}
+
 }
 }

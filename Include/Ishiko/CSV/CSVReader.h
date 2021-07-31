@@ -37,6 +37,7 @@ public:
     CSVReader();
 
     void open(const boost::filesystem::path& path);
+    void readLine();
 
 private:
     std::ifstream m_input;
