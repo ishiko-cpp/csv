@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2019 Xavier Leclercq
+    Copyright (c) 2019-2021 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,20 +20,20 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _ISHIKO_CSV_TESTS_CSVREADERTESTS_H_
-#define _ISHIKO_CSV_TESTS_CSVREADERTESTS_H_
+#ifndef _ISHIKO_CPP_CSV_TESTS_CSVREADERTESTS_H_
+#define _ISHIKO_CPP_CSV_TESTS_CSVREADERTESTS_H_
 
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include <Ishiko/Tests/Core.h>
 
-class CSVReaderTests
+class CSVReaderTests : public Ishiko::Tests::TestSequence
 {
 public:
-    static void AddTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+    CSVReaderTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome OpenTest1(Ishiko::TestFramework::Test& test);
-    static Ishiko::TestFramework::TestResult::EOutcome ReadLineTest1(Ishiko::TestFramework::Test& test);
+    static void ConstructorTest1(Ishiko::Tests::Test& test);
+    static void OpenTest1(Ishiko::Tests::Test& test);
+    static void ReadLineTest1(Ishiko::Tests::Test& test);
 };
 
 #endif

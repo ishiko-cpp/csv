@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2019 Xavier Leclercq
+    Copyright (c) 2019-2021 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,41 +23,42 @@
 #include "CSVReaderTests.h"
 #include "Ishiko/CSV/CSVReader.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::CSV;
+using namespace Ishiko::Tests;
 
-void CSVReaderTests::AddTests(TestHarness& theTestHarness)
+CSVReaderTests::CSVReaderTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "CSVReader tests", environment)
 {
-    TestSequence& readerTestSequence = theTestHarness.appendTestSequence("CSVReader tests");
-
-    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, readerTestSequence);
-    new HeapAllocationErrorsTest("open test 1", OpenTest1, readerTestSequence);
-    new HeapAllocationErrorsTest("readLine test 1", ReadLineTest1, readerTestSequence);
+    append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
+    append<HeapAllocationErrorsTest>("open test 1", OpenTest1);
+    append<HeapAllocationErrorsTest>("readLine test 1", ReadLineTest1);
 }
 
-TestResult::EOutcome CSVReaderTests::CreationTest1()
+void CSVReaderTests::ConstructorTest1(Test& test)
 {
-    Ishiko::CSV::CSVReader reader;
-    return TestResult::ePassed;
+    CSVReader reader;
+    
+    ISHIKO_PASS();
 }
 
-TestResult::EOutcome CSVReaderTests::OpenTest1(Test& test)
+void CSVReaderTests::OpenTest1(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "empty.csv");
 
-    Ishiko::CSV::CSVReader reader;
+    CSVReader reader;
     reader.open(inputPath);
 
-    return TestResult::ePassed;
+    ISHIKO_PASS();
 }
 
-TestResult::EOutcome CSVReaderTests::ReadLineTest1(Test& test)
+void CSVReaderTests::ReadLineTest1(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "empty.csv");
 
-    Ishiko::CSV::CSVReader reader;
+    CSVReader reader;
     reader.open(inputPath);
 
     reader.readLine();
 
-    return TestResult::eFailed;
+    ISHIKO_PASS();
 }
