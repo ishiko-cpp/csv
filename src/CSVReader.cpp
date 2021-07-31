@@ -20,31 +20,25 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _ISHIKO_CSV_CSVREADER_H_
-#define _ISHIKO_CSV_CSVREADER_H_
-
-#include <boost/filesystem/path.hpp>
-#include <fstream>
+#include "CSVReader.h"
 
 namespace Ishiko
 {
 namespace CSV
 {
 
-class CSVReader
+CSVReader::CSVReader()
 {
-public:
-    CSVReader();
+}
 
-    void open(const boost::filesystem::path& path);
+void CSVReader::open(const boost::filesystem::path& path)
+{
+    m_input.open(path.string());
+}
 
-private:
-    std::ifstream m_input;
-};
+void CSVReader::readLine()
+{
+}
 
 }
 }
-
-#include "linkoptions.h"
-
-#endif
