@@ -33,8 +33,9 @@ library IshikoCSV : Boost
 
     headers
     {
-        ../../include/Ishiko/CSV/CSVReader.h
-        ../../include/Ishiko/CSV/linkoptions.h
+        ../../include/Ishiko/CSV.hpp
+        ../../include/Ishiko/CSV/CSVReader.hpp
+        ../../include/Ishiko/CSV/linkoptions.hpp
     }
 
     sources
