@@ -153,8 +153,9 @@
     <ClCompile Include="..\..\src\CSVReader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\Ishiko\CSV\CSVReader.h" />
-    <ClInclude Include="..\..\include\Ishiko\CSV\linkoptions.h" />
+    <ClInclude Include="..\..\include\Ishiko\CSV.hpp" />
+    <ClInclude Include="..\..\include\Ishiko\CSV\CSVReader.hpp" />
+    <ClInclude Include="..\..\include\Ishiko\CSV\linkoptions.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
