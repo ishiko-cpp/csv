@@ -1,11 +1,11 @@
 /*
-    Copyright (c) 2019-2021 Xavier Leclercq
+    Copyright (c) 2019-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/csv/blob/main/LICENSE.txt
 */
 
 #include "CSVReaderTests.h"
-#include "Ishiko/CSV/CSVReader.h"
+#include <Ishiko/CSV/CSVReader.hpp>
 
 using namespace Ishiko::CSV;
 using namespace Ishiko::Tests;

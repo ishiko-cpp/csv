@@ -5,6 +5,7 @@
 */
 
 #include "CSVReaderTests.h"
+#include <Ishiko/CSV/linkoptions.hpp>
 #include <Ishiko/Tests/Core.hpp>
 
 using namespace Ishiko::Tests;
