@@ -4,8 +4,8 @@
     See https://github.com/ishiko-cpp/csv/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_CSV_CSVREADER_HPP_
-#define _ISHIKO_CSV_CSVREADER_HPP_
+#ifndef _ISHIKO_CPP_CSV_CSVREADER_HPP_
+#define _ISHIKO_CPP_CSV_CSVREADER_HPP_
 
 #include <boost/filesystem/path.hpp>
 #include <fstream>
