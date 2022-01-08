@@ -6,6 +6,8 @@
 
 #include "CSVReader.hpp"
 
+using namespace boost::filesystem;
+
 namespace Ishiko
 {
 namespace CSV
@@ -15,9 +17,9 @@ CSVReader::CSVReader()
 {
 }
 
-void CSVReader::open(const boost::filesystem::path& path)
+void CSVReader::open(const path& path, Error& error)
 {
-    m_input.open(path.string());
+    m_input.open(path, error);
 }
 
 void CSVReader::readLine()

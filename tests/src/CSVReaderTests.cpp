@@ -6,7 +6,9 @@
 
 #include "CSVReaderTests.h"
 #include <Ishiko/CSV/CSVReader.hpp>
+#include <Ishiko/Errors.hpp>
 
+using namespace Ishiko;
 using namespace Ishiko::CSV;
 using namespace Ishiko::Tests;
 
@@ -30,8 +32,11 @@ void CSVReaderTests::OpenTest1(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "empty.csv");
 
     CSVReader reader;
-    reader.open(inputPath);
 
+    Error error;
+    reader.open(inputPath, error);
+
+    ISHIKO_FAIL_IF(error)
     ISHIKO_PASS();
 }
 
@@ -39,8 +44,12 @@ void CSVReaderTests::ReadLineTest1(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "empty.csv");
 
+    Error error;
+
     CSVReader reader;
-    reader.open(inputPath);
+    reader.open(inputPath, error);
+
+    ISHIKO_ABORT_IF(error);
 
     reader.readLine();
 
