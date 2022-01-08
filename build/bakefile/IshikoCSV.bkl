@@ -1,4 +1,5 @@
 ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/filesystem/include/Ishiko/FileSystem.bkl;
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
 
 toolsets = gnu vs2019 vs2017 vs2015 vs2013;
@@ -9,7 +10,7 @@ vs2017.solutionfile = ../vc15/IshikoCSV.sln;
 vs2015.solutionfile = ../vc14/IshikoCSV.sln;
 vs2013.solutionfile = ../vc12/IshikoCSV.sln;
 
-library IshikoCSV : Boost
+library IshikoCSV : IshikoFileSystem, Boost
 {
     archs = x86 x86_64;
 
