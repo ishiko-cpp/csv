@@ -11,6 +11,8 @@
 #include <Ishiko/Errors.hpp>
 #include <Ishiko/FileSystem.hpp>
 #include <fstream>
+#include <string>
+#include <vector>
 
 namespace Ishiko
 {
@@ -24,7 +26,7 @@ public:
 
     void open(const boost::filesystem::path& path, Ishiko::Error& error);
 
-    void readLine();
+    std::vector<std::string> readLine(Ishiko::Error& error);
 
 private:
     Ishiko::FileSystem::TextFile m_input;

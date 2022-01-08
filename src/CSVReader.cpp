@@ -5,8 +5,11 @@
 */
 
 #include "CSVReader.hpp"
+#include <Ishiko/Text.hpp>
 
 using namespace boost::filesystem;
+using namespace Ishiko::Text;
+using namespace std;
 
 namespace Ishiko
 {
@@ -22,8 +25,21 @@ void CSVReader::open(const path& path, Error& error)
     m_input.open(path, error);
 }
 
-void CSVReader::readLine()
+vector<string> CSVReader::readLine(Error& error)
 {
+    vector<string> result;
+    
+    string line = m_input.readLine(error);
+    if (!error)
+    {
+        result = ASCII::Split(line, ',');
+        for (string& item : result)
+        {
+            ASCII::Trim(item);
+        }
+    }
+
+    return result;
 }
 
 }
