@@ -1,5 +1,6 @@
 ishikopath = envvar("ISHIKO_CPP");
 import $(ishikopath)/filesystem/include/Ishiko/FileSystem.bkl;
+import $(ishikopath)/text/include/Ishiko/Text.bkl;
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
 
 setting ISHIKO_CPP_CSV_ROOT
@@ -8,7 +9,7 @@ setting ISHIKO_CPP_CSV_ROOT
     default = '$(ISHIKO_CPP)/csv';
 }
 
-template IshikoCSV : IshikoFileSystem, Boost
+template IshikoCSV : IshikoFileSystem, IshikoText, Boost
 {
     includedirs += $(ISHIKO_CPP_CSV_ROOT)/include;
 
