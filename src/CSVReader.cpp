@@ -42,5 +42,27 @@ vector<string> CSVReader::readLine(Error& error)
     return result;
 }
 
+vector<vector<string>> CSVReader::readAllLines(Error& error)
+{
+    vector<vector<string>> result;
+
+    while (true)
+    {
+        Error readError;
+        vector<string> line = readLine(readError);
+        if (readError)
+        {
+            if (readError.condition().value() != FileSystem::ErrorCategory::eEndOfFile)
+            {
+                error.fail(readError);
+            }
+            break;
+        }
+        result.push_back(line);
+    }
+
+    return result;
+}
+
 }
 }

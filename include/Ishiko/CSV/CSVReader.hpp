@@ -27,6 +27,7 @@ public:
     void open(const boost::filesystem::path& path, Ishiko::Error& error);
 
     std::vector<std::string> readLine(Ishiko::Error& error);
+    std::vector<std::vector<std::string>> readAllLines(Error& error);
 
 private:
     Ishiko::FileSystem::TextFile m_input;
