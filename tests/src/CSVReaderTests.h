@@ -12,7 +12,7 @@
 class CSVReaderTests : public Ishiko::Tests::TestSequence
 {
 public:
-    CSVReaderTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
+    CSVReaderTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
 
 private:
     static void ConstructorTest1(Ishiko::Tests::Test& test);
