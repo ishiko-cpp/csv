@@ -15,8 +15,8 @@ using namespace Ishiko::CSV;
 using namespace Ishiko::Tests;
 using namespace std;
 
-CSVReaderTests::CSVReaderTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "CSVReader tests", environment)
+CSVReaderTests::CSVReaderTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "CSVReader tests", context)
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("open test 1", OpenTest1);
@@ -37,7 +37,7 @@ void CSVReaderTests::ConstructorTest1(Test& test)
 
 void CSVReaderTests::OpenTest1(Test& test)
 {
-    path inputPath(test.environment().getTestDataPath("empty.csv"));
+    path inputPath(test.context().getTestDataPath("empty.csv"));
 
     CSVReader reader;
 
@@ -50,7 +50,7 @@ void CSVReaderTests::OpenTest1(Test& test)
 
 void CSVReaderTests::ReadLineTest1(Test& test)
 {
-    path inputPath(test.environment().getTestDataPath("empty.csv"));
+    path inputPath(test.context().getTestDataPath("empty.csv"));
 
     Error error;
 
@@ -70,7 +70,7 @@ void CSVReaderTests::ReadLineTest1(Test& test)
 
 void CSVReaderTests::ReadLineTest2(Test& test)
 {
-    path inputPath(test.environment().getTestDataPath("CSVReaderTests_ReadLineTest2.csv"));
+    path inputPath(test.context().getTestDataPath("CSVReaderTests_ReadLineTest2.csv"));
 
     Error error;
 
@@ -89,7 +89,7 @@ void CSVReaderTests::ReadLineTest2(Test& test)
 
 void CSVReaderTests::ReadLineTest3(Test& test)
 {
-    path inputPath(test.environment().getTestDataPath("CSVReaderTests_ReadLineTest3.csv"));
+    path inputPath(test.context().getTestDataPath("CSVReaderTests_ReadLineTest3.csv"));
 
     Error error;
 
@@ -109,7 +109,7 @@ void CSVReaderTests::ReadLineTest3(Test& test)
 
 void CSVReaderTests::ReadAllLinesTest1(Test& test)
 {
-    path inputPath(test.environment().getTestDataPath("empty.csv"));
+    path inputPath(test.context().getTestDataPath("empty.csv"));
 
     Error error;
 
@@ -127,7 +127,7 @@ void CSVReaderTests::ReadAllLinesTest1(Test& test)
 
 void CSVReaderTests::ReadAllLinesTest2(Test& test)
 {
-    path inputPath(test.environment().getTestDataPath("CSVReaderTests_ReadAllLinesTest2.csv"));
+    path inputPath(test.context().getTestDataPath("CSVReaderTests_ReadAllLinesTest2.csv"));
 
     Error error;
 
@@ -151,7 +151,7 @@ void CSVReaderTests::ReadAllLinesTest2(Test& test)
 
 void CSVReaderTests::ForEachLineTest1(Test& test)
 {
-    path inputPath(test.environment().getTestDataPath("CSVReaderTests_ReadAllLinesTest2.csv"));
+    path inputPath(test.context().getTestDataPath("CSVReaderTests_ReadAllLinesTest2.csv"));
 
     Error error;
     
