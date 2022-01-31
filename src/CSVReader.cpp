@@ -36,6 +36,14 @@ vector<string> CSVReader::readLine(Error& error)
         for (string& item : result)
         {
             ASCII::Trim(item);
+            if (!item.empty() && (item.front() == '\"'))
+            {
+                item.erase(0, 1);
+            }
+            if (!item.empty() && (item.back() == '\"'))
+            {
+                item.erase(item.size() - 1, 1);
+            }
         }
     }
 

@@ -23,6 +23,7 @@ CSVReaderTests::CSVReaderTests(const TestNumber& number, const TestContext& cont
     append<HeapAllocationErrorsTest>("readLine test 1", ReadLineTest1);
     append<HeapAllocationErrorsTest>("readLine test 2", ReadLineTest2);
     append<HeapAllocationErrorsTest>("readLine test 3", ReadLineTest3);
+    append<HeapAllocationErrorsTest>("readLine test 4", ReadLineTest4);
     append<HeapAllocationErrorsTest>("readAllLines test 1", ReadAllLinesTest1);
     append<HeapAllocationErrorsTest>("readAllLines test 2", ReadAllLinesTest2);
     append<HeapAllocationErrorsTest>("forEachLine test 1", ForEachLineTest1);
@@ -83,7 +84,7 @@ void CSVReaderTests::ReadLineTest2(Test& test)
 
     ISHIKO_FAIL_IF(error);
     ISHIKO_ABORT_IF_NEQ(line.size(), 1);
-    ISHIKO_ABORT_IF_NEQ(line[0], "Title 1");
+    ISHIKO_FAIL_IF_NEQ(line[0], "Title 1");
     ISHIKO_PASS();
 }
 
@@ -104,6 +105,25 @@ void CSVReaderTests::ReadLineTest3(Test& test)
     ISHIKO_ABORT_IF_NEQ(line.size(), 2);
     ISHIKO_FAIL_IF_NEQ(line[0], "Title 1");
     ISHIKO_FAIL_IF_NEQ(line[1], "Title 2");
+    ISHIKO_PASS();
+}
+
+void CSVReaderTests::ReadLineTest4(Test& test)
+{
+    path inputPath(test.context().getTestDataPath("CSVReaderTests_ReadLineTest4.csv"));
+
+    Error error;
+
+    CSVReader reader;
+    reader.open(inputPath, error);
+
+    ISHIKO_ABORT_IF(error);
+
+    vector<string> line = reader.readLine(error);
+
+    ISHIKO_FAIL_IF(error);
+    ISHIKO_ABORT_IF_NEQ(line.size(), 1);
+    ISHIKO_FAIL_IF_NEQ(line[0], "Title 1");
     ISHIKO_PASS();
 }
 
