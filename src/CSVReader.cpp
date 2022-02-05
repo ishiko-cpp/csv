@@ -32,7 +32,7 @@ vector<string> CSVReader::readLine(Error& error)
     string line = m_input.readLine(error);
     if (!error)
     {
-        result = ASCII::Split(line, ',');
+        result = ASCII::Split(line, ',', false);
         for (string& item : result)
         {
             ASCII::Trim(item);
