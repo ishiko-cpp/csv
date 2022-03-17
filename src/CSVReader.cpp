@@ -60,7 +60,7 @@ vector<vector<string>> CSVReader::readAllLines(Error& error)
         vector<string> line = readLine(readError);
         if (readError)
         {
-            if (readError.condition().value() != FileSystem::ErrorCategory::eEndOfFile)
+            if (readError.condition() != FileSystemErrorCategory::Value::endOfFile)
             {
                 error.fail(readError);
             }

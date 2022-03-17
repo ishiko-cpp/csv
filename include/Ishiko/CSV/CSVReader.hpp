@@ -31,7 +31,7 @@ public:
     template<typename Callable> void forEachLine(Callable&& callback, Error& error);
 
 private:
-    Ishiko::FileSystem::TextFile m_input;
+    Ishiko::TextFile m_input;
 };
 
 template<typename Callable>
