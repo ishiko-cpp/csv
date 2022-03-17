@@ -31,7 +31,7 @@ public:
     template<typename Callable> void forEachLine(Callable&& callback, Error& error);
 
 private:
-    Ishiko::FileSystem::TextFile m_input;
+    Ishiko::TextFile m_input;
 };
 
 template<typename Callable>
@@ -43,7 +43,7 @@ void CSVReader::forEachLine(Callable&& callback, Error& error)
         std::vector<std::string> line = readLine(readError);
         if (readError)
         {
-            if (readError.condition().value() != FileSystem::ErrorCategory::eEndOfFile)
+            if (readError.condition() != FileSystemErrorCategory::Value::endOfFile)
             {
                 error.fail(readError);
             }
