@@ -63,8 +63,7 @@ void CSVReaderTests::ReadLineTest1(Test& test)
     vector<string> line = reader.readLine(error);
 
     ISHIKO_FAIL_IF_NOT(error);
-    ISHIKO_FAIL_IF_NEQ(&error.condition().category(), &FileSystem::ErrorCategory::Get());
-    ISHIKO_FAIL_IF_NEQ(error.condition().value(), FileSystem::ErrorCategory::eEndOfFile);
+    ISHIKO_FAIL_IF_NEQ(error.condition(), FileSystemErrorCategory::Value::endOfFile);
     ISHIKO_FAIL_IF_NEQ(line.size(), 0);
     ISHIKO_PASS();
 }
