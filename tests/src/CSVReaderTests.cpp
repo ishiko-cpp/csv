@@ -33,7 +33,7 @@ void CSVReaderTests::ConstructorTest1(Test& test)
 {
     CSVReader reader;
     
-    ISHIKO_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void CSVReaderTests::OpenTest1(Test& test)
@@ -45,8 +45,8 @@ void CSVReaderTests::OpenTest1(Test& test)
     Error error;
     reader.open(inputPath, error);
 
-    ISHIKO_FAIL_IF(error)
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF(error)
+    ISHIKO_TEST_PASS();
 }
 
 void CSVReaderTests::ReadLineTest1(Test& test)
@@ -58,14 +58,14 @@ void CSVReaderTests::ReadLineTest1(Test& test)
     CSVReader reader;
     reader.open(inputPath, error);
 
-    ISHIKO_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     vector<string> line = reader.readLine(error);
 
-    ISHIKO_FAIL_IF_NOT(error);
-    ISHIKO_FAIL_IF_NEQ(error.condition(), FileSystemErrorCategory::Value::endOfFile);
-    ISHIKO_FAIL_IF_NEQ(line.size(), 0);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(error);
+    ISHIKO_TEST_FAIL_IF_NEQ(error.condition(), FileSystemErrorCategory::Value::endOfFile);
+    ISHIKO_TEST_FAIL_IF_NEQ(line.size(), 0);
+    ISHIKO_TEST_PASS();
 }
 
 void CSVReaderTests::ReadLineTest2(Test& test)
@@ -77,14 +77,14 @@ void CSVReaderTests::ReadLineTest2(Test& test)
     CSVReader reader;
     reader.open(inputPath, error);
 
-    ISHIKO_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     vector<string> line = reader.readLine(error);
 
-    ISHIKO_FAIL_IF(error);
-    ISHIKO_ABORT_IF_NEQ(line.size(), 1);
-    ISHIKO_FAIL_IF_NEQ(line[0], "Title 1");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_ABORT_IF_NEQ(line.size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(line[0], "Title 1");
+    ISHIKO_TEST_PASS();
 }
 
 void CSVReaderTests::ReadLineTest3(Test& test)
@@ -96,15 +96,15 @@ void CSVReaderTests::ReadLineTest3(Test& test)
     CSVReader reader;
     reader.open(inputPath, error);
 
-    ISHIKO_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     vector<string> line = reader.readLine(error);
 
-    ISHIKO_FAIL_IF(error);
-    ISHIKO_ABORT_IF_NEQ(line.size(), 2);
-    ISHIKO_FAIL_IF_NEQ(line[0], "Title 1");
-    ISHIKO_FAIL_IF_NEQ(line[1], "Title 2");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_ABORT_IF_NEQ(line.size(), 2);
+    ISHIKO_TEST_FAIL_IF_NEQ(line[0], "Title 1");
+    ISHIKO_TEST_FAIL_IF_NEQ(line[1], "Title 2");
+    ISHIKO_TEST_PASS();
 }
 
 void CSVReaderTests::ReadLineTest4(Test& test)
@@ -116,14 +116,14 @@ void CSVReaderTests::ReadLineTest4(Test& test)
     CSVReader reader;
     reader.open(inputPath, error);
 
-    ISHIKO_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     vector<string> line = reader.readLine(error);
 
-    ISHIKO_FAIL_IF(error);
-    ISHIKO_ABORT_IF_NEQ(line.size(), 1);
-    ISHIKO_FAIL_IF_NEQ(line[0], "Title 1");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_ABORT_IF_NEQ(line.size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(line[0], "Title 1");
+    ISHIKO_TEST_PASS();
 }
 
 void CSVReaderTests::ReadAllLinesTest1(Test& test)
@@ -135,13 +135,13 @@ void CSVReaderTests::ReadAllLinesTest1(Test& test)
     CSVReader reader;
     reader.open(inputPath, error);
 
-    ISHIKO_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     vector<vector<string>> lines = reader.readAllLines(error);
 
-    ISHIKO_FAIL_IF(error);
-    ISHIKO_FAIL_IF_NEQ(lines.size(), 0);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF_NEQ(lines.size(), 0);
+    ISHIKO_TEST_PASS();
 }
 
 void CSVReaderTests::ReadAllLinesTest2(Test& test)
@@ -153,19 +153,19 @@ void CSVReaderTests::ReadAllLinesTest2(Test& test)
     CSVReader reader;
     reader.open(inputPath, error);
 
-    ISHIKO_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     vector<vector<string>> lines = reader.readAllLines(error);
 
-    ISHIKO_FAIL_IF(error);
-    ISHIKO_ABORT_IF_NEQ(lines.size(), 2);
-    ISHIKO_ABORT_IF_NEQ(lines[0].size(), 2);
-    ISHIKO_FAIL_IF_NEQ(lines[0][0], "Title 1");
-    ISHIKO_FAIL_IF_NEQ(lines[0][1], "Title 2");
-    ISHIKO_ABORT_IF_NEQ(lines[1].size(), 2);
-    ISHIKO_FAIL_IF_NEQ(lines[1][0], "value1");
-    ISHIKO_FAIL_IF_NEQ(lines[1][1], "234");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_ABORT_IF_NEQ(lines.size(), 2);
+    ISHIKO_TEST_ABORT_IF_NEQ(lines[0].size(), 2);
+    ISHIKO_TEST_FAIL_IF_NEQ(lines[0][0], "Title 1");
+    ISHIKO_TEST_FAIL_IF_NEQ(lines[0][1], "Title 2");
+    ISHIKO_TEST_ABORT_IF_NEQ(lines[1].size(), 2);
+    ISHIKO_TEST_FAIL_IF_NEQ(lines[1][0], "value1");
+    ISHIKO_TEST_FAIL_IF_NEQ(lines[1][1], "234");
+    ISHIKO_TEST_PASS();
 }
 
 void CSVReaderTests::ForEachLineTest1(Test& test)
@@ -177,7 +177,7 @@ void CSVReaderTests::ForEachLineTest1(Test& test)
     CSVReader reader;
     reader.open(inputPath, error);
 
-    ISHIKO_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     vector<vector<string>> lines;
     reader.forEachLine(
@@ -187,13 +187,13 @@ void CSVReaderTests::ForEachLineTest1(Test& test)
         },
         error);
 
-    ISHIKO_FAIL_IF(error);
-    ISHIKO_ABORT_IF_NEQ(lines.size(), 2);
-    ISHIKO_ABORT_IF_NEQ(lines[0].size(), 2);
-    ISHIKO_FAIL_IF_NEQ(lines[0][0], "Title 1");
-    ISHIKO_FAIL_IF_NEQ(lines[0][1], "Title 2");
-    ISHIKO_ABORT_IF_NEQ(lines[1].size(), 2);
-    ISHIKO_FAIL_IF_NEQ(lines[1][0], "value1");
-    ISHIKO_FAIL_IF_NEQ(lines[1][1], "234");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_ABORT_IF_NEQ(lines.size(), 2);
+    ISHIKO_TEST_ABORT_IF_NEQ(lines[0].size(), 2);
+    ISHIKO_TEST_FAIL_IF_NEQ(lines[0][0], "Title 1");
+    ISHIKO_TEST_FAIL_IF_NEQ(lines[0][1], "Title 2");
+    ISHIKO_TEST_ABORT_IF_NEQ(lines[1].size(), 2);
+    ISHIKO_TEST_FAIL_IF_NEQ(lines[1][0], "value1");
+    ISHIKO_TEST_FAIL_IF_NEQ(lines[1][1], "234");
+    ISHIKO_TEST_PASS();
 }

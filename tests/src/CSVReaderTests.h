@@ -9,21 +9,21 @@
 
 #include <Ishiko/Tests/Core.hpp>
 
-class CSVReaderTests : public Ishiko::Tests::TestSequence
+class CSVReaderTests : public Ishiko::TestSequence
 {
 public:
-    CSVReaderTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
+    CSVReaderTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void ConstructorTest1(Ishiko::Tests::Test& test);
-    static void OpenTest1(Ishiko::Tests::Test& test);
-    static void ReadLineTest1(Ishiko::Tests::Test& test);
-    static void ReadLineTest2(Ishiko::Tests::Test& test);
-    static void ReadLineTest3(Ishiko::Tests::Test& test);
-    static void ReadLineTest4(Ishiko::Tests::Test& test);
-    static void ReadAllLinesTest1(Ishiko::Tests::Test& test);
-    static void ReadAllLinesTest2(Ishiko::Tests::Test& test);
-    static void ForEachLineTest1(Ishiko::Tests::Test& test);
+    static void ConstructorTest1(Ishiko::Test& test);
+    static void OpenTest1(Ishiko::Test& test);
+    static void ReadLineTest1(Ishiko::Test& test);
+    static void ReadLineTest2(Ishiko::Test& test);
+    static void ReadLineTest3(Ishiko::Test& test);
+    static void ReadLineTest4(Ishiko::Test& test);
+    static void ReadAllLinesTest1(Ishiko::Test& test);
+    static void ReadAllLinesTest2(Ishiko::Test& test);
+    static void ForEachLineTest1(Ishiko::Test& test);
 };
 
 #endif

@@ -8,7 +8,7 @@
 #include <Ishiko/CSV/linkoptions.hpp>
 #include <Ishiko/Tests/Core.hpp>
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
 int main(int argc, char* argv[])
 {
