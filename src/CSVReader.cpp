@@ -8,7 +8,6 @@
 #include <Ishiko/Text.hpp>
 
 using namespace boost::filesystem;
-using namespace Ishiko::Text;
 using namespace std;
 
 namespace Ishiko
