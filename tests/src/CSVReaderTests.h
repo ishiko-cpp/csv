@@ -7,7 +7,7 @@
 #ifndef _ISHIKO_CPP_CSV_TESTS_CSVREADERTESTS_H_
 #define _ISHIKO_CPP_CSV_TESTS_CSVREADERTESTS_H_
 
-#include <Ishiko/Tests/Core.hpp>
+#include <Ishiko/TestFramework/Core.hpp>
 
 class CSVReaderTests : public Ishiko::TestSequence
 {
