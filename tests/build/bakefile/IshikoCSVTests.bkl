@@ -1,6 +1,6 @@
 ishikopath = envvar("ISHIKO_CPP");
 import $(ishikopath)/csv/include/Ishiko/CSV.bkl;
-import $(ishikopath)/test-framework/include/Ishiko/Tests/Core.bkl;
+import $(ishikopath)/test-framework/include/Ishiko/TestFramework/Core.bkl;
 
 toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 
@@ -10,14 +10,14 @@ vs2017.solutionfile = ../vc15/IshikoCSVTests.sln;
 vs2015.solutionfile = ../vc14/IshikoCSVTests.sln;
 vs2013.solutionfile = ../vc12/IshikoCSVTests.sln;
 
-program IshikoCSVTests : IshikoCSV, IshikoTestsCore
+program IshikoCSVTests : IshikoCSV, IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += IshikoCSV IshikoTestsCore IshikoFileSystem IshikoProcess IshikoText IshikoErrors boost_filesystem boost_system;
+        libs += IshikoCSV IshikoTestFrameworkCore IshikoFileSystem IshikoProcess IshikoText IshikoErrors boost_filesystem boost_system;
     }
 
     headers
