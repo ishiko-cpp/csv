@@ -9,11 +9,7 @@
 #include <Ishiko/Errors.hpp>
 #include <Ishiko/FileSystem.hpp>
 
-using namespace boost::filesystem;
 using namespace Ishiko;
-using namespace Ishiko::CSV;
-using namespace Ishiko::Tests;
-using namespace std;
 
 CSVReaderTests::CSVReaderTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "CSVReader tests", context)
@@ -38,7 +34,7 @@ void CSVReaderTests::ConstructorTest1(Test& test)
 
 void CSVReaderTests::OpenTest1(Test& test)
 {
-    path inputPath(test.context().getTestDataPath("empty.csv"));
+    boost::filesystem::path inputPath = test.context().getDataPath("empty.csv");
 
     CSVReader reader;
 
@@ -51,7 +47,7 @@ void CSVReaderTests::OpenTest1(Test& test)
 
 void CSVReaderTests::ReadLineTest1(Test& test)
 {
-    path inputPath(test.context().getTestDataPath("empty.csv"));
+    boost::filesystem::path inputPath = test.context().getDataPath("empty.csv");
 
     Error error;
 
@@ -60,7 +56,7 @@ void CSVReaderTests::ReadLineTest1(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    vector<string> line = reader.readLine(error);
+    std::vector<std::string> line = reader.readLine(error);
 
     ISHIKO_TEST_FAIL_IF_NOT(error);
     ISHIKO_TEST_FAIL_IF_NEQ(error.condition(), FileSystemErrorCategory::Value::endOfFile);
@@ -70,7 +66,7 @@ void CSVReaderTests::ReadLineTest1(Test& test)
 
 void CSVReaderTests::ReadLineTest2(Test& test)
 {
-    path inputPath(test.context().getTestDataPath("CSVReaderTests_ReadLineTest2.csv"));
+    boost::filesystem::path inputPath = test.context().getDataPath("CSVReaderTests_ReadLineTest2.csv");
 
     Error error;
 
@@ -79,7 +75,7 @@ void CSVReaderTests::ReadLineTest2(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    vector<string> line = reader.readLine(error);
+    std::vector<std::string> line = reader.readLine(error);
 
     ISHIKO_TEST_FAIL_IF(error);
     ISHIKO_TEST_ABORT_IF_NEQ(line.size(), 1);
@@ -89,7 +85,7 @@ void CSVReaderTests::ReadLineTest2(Test& test)
 
 void CSVReaderTests::ReadLineTest3(Test& test)
 {
-    path inputPath(test.context().getTestDataPath("CSVReaderTests_ReadLineTest3.csv"));
+    boost::filesystem::path inputPath = test.context().getDataPath("CSVReaderTests_ReadLineTest3.csv");
 
     Error error;
 
@@ -98,7 +94,7 @@ void CSVReaderTests::ReadLineTest3(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    vector<string> line = reader.readLine(error);
+    std::vector<std::string> line = reader.readLine(error);
 
     ISHIKO_TEST_FAIL_IF(error);
     ISHIKO_TEST_ABORT_IF_NEQ(line.size(), 2);
@@ -109,7 +105,7 @@ void CSVReaderTests::ReadLineTest3(Test& test)
 
 void CSVReaderTests::ReadLineTest4(Test& test)
 {
-    path inputPath(test.context().getTestDataPath("CSVReaderTests_ReadLineTest4.csv"));
+    boost::filesystem::path inputPath = test.context().getDataPath("CSVReaderTests_ReadLineTest4.csv");
 
     Error error;
 
@@ -118,7 +114,7 @@ void CSVReaderTests::ReadLineTest4(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    vector<string> line = reader.readLine(error);
+    std::vector<std::string> line = reader.readLine(error);
 
     ISHIKO_TEST_FAIL_IF(error);
     ISHIKO_TEST_ABORT_IF_NEQ(line.size(), 1);
@@ -128,7 +124,7 @@ void CSVReaderTests::ReadLineTest4(Test& test)
 
 void CSVReaderTests::ReadAllLinesTest1(Test& test)
 {
-    path inputPath(test.context().getTestDataPath("empty.csv"));
+    boost::filesystem::path inputPath = test.context().getDataPath("empty.csv");
 
     Error error;
 
@@ -137,7 +133,7 @@ void CSVReaderTests::ReadAllLinesTest1(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    vector<vector<string>> lines = reader.readAllLines(error);
+    std::vector<std::vector<std::string>> lines = reader.readAllLines(error);
 
     ISHIKO_TEST_FAIL_IF(error);
     ISHIKO_TEST_FAIL_IF_NEQ(lines.size(), 0);
@@ -146,7 +142,7 @@ void CSVReaderTests::ReadAllLinesTest1(Test& test)
 
 void CSVReaderTests::ReadAllLinesTest2(Test& test)
 {
-    path inputPath(test.context().getTestDataPath("CSVReaderTests_ReadAllLinesTest2.csv"));
+    boost::filesystem::path inputPath = test.context().getDataPath("CSVReaderTests_ReadAllLinesTest2.csv");
 
     Error error;
 
@@ -155,7 +151,7 @@ void CSVReaderTests::ReadAllLinesTest2(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    vector<vector<string>> lines = reader.readAllLines(error);
+    std::vector<std::vector<std::string>> lines = reader.readAllLines(error);
 
     ISHIKO_TEST_FAIL_IF(error);
     ISHIKO_TEST_ABORT_IF_NEQ(lines.size(), 2);
@@ -170,7 +166,7 @@ void CSVReaderTests::ReadAllLinesTest2(Test& test)
 
 void CSVReaderTests::ForEachLineTest1(Test& test)
 {
-    path inputPath(test.context().getTestDataPath("CSVReaderTests_ReadAllLinesTest2.csv"));
+    boost::filesystem::path inputPath = test.context().getDataPath("CSVReaderTests_ReadAllLinesTest2.csv");
 
     Error error;
     
@@ -179,9 +175,9 @@ void CSVReaderTests::ForEachLineTest1(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    vector<vector<string>> lines;
+    std::vector<std::vector<std::string>> lines;
     reader.forEachLine(
-        [&lines](const vector<string>& line)
+        [&lines](const std::vector<std::string>& line)
         {
             lines.push_back(line);
         },
