@@ -16,8 +16,6 @@
 
 namespace Ishiko
 {
-namespace CSV
-{
 
 class CSVReader
 {
@@ -53,7 +51,6 @@ void CSVReader::forEachLine(Callable&& callback, Error& error)
     }
 }
 
-}
 }
 
 #endif
