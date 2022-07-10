@@ -8,7 +8,6 @@
 #define _ISHIKO_CPP_CSV_HPP_
 
 #include "CSV/CSVReader.hpp"
-
 #include "CSV/linkoptions.hpp"
 
 #endif

@@ -7,32 +7,26 @@
 #include "CSVReader.hpp"
 #include <Ishiko/Text.hpp>
 
-using namespace boost::filesystem;
-using namespace std;
-
-namespace Ishiko
-{
-namespace CSV
-{
+using namespace Ishiko;
 
 CSVReader::CSVReader()
 {
 }
 
-void CSVReader::open(const path& path, Error& error)
+void CSVReader::open(const boost::filesystem::path& path, Error& error)
 {
     m_input.open(path, error);
 }
 
-vector<string> CSVReader::readLine(Error& error)
+std::vector<std::string> CSVReader::readLine(Error& error)
 {
-    vector<string> result;
+    std::vector<std::string> result;
     
-    string line = m_input.readLine(error);
+    std::string line = m_input.readLine(error);
     if (!error)
     {
         result = ASCII::Split(line, ',', false);
-        for (string& item : result)
+        for (std::string& item : result)
         {
             ASCII::Trim(item);
             if (!item.empty() && (item.front() == '\"'))
@@ -49,14 +43,14 @@ vector<string> CSVReader::readLine(Error& error)
     return result;
 }
 
-vector<vector<string>> CSVReader::readAllLines(Error& error)
+std::vector<std::vector<std::string>> CSVReader::readAllLines(Error& error)
 {
-    vector<vector<string>> result;
+    std::vector<std::vector<std::string>> result;
 
     while (true)
     {
         Error readError;
-        vector<string> line = readLine(readError);
+        std::vector<std::string> line = readLine(readError);
         if (readError)
         {
             if (readError.condition() != FileSystemErrorCategory::Value::endOfFile)
@@ -69,7 +63,4 @@ vector<vector<string>> CSVReader::readAllLines(Error& error)
     }
 
     return result;
-}
-
-}
 }
