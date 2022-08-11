@@ -59,7 +59,7 @@ void CSVReaderTests::ReadLineTest1(Test& test)
     std::vector<std::string> line = reader.readLine(error);
 
     ISHIKO_TEST_FAIL_IF_NOT(error);
-    ISHIKO_TEST_FAIL_IF_NEQ(error.condition(), FileSystemErrorCategory::Value::endOfFile);
+    ISHIKO_TEST_FAIL_IF_NEQ(error.condition(), FileSystemErrorCategory::Value::end_of_file);
     ISHIKO_TEST_FAIL_IF_NEQ(line.size(), 0);
     ISHIKO_TEST_PASS();
 }
