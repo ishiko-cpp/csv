@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2019-2022 Xavier Leclercq
+    Copyright (c) 2019-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/csv/blob/main/LICENSE.txt
 */
@@ -20,6 +20,7 @@ CSVReaderTests::CSVReaderTests(const TestNumber& number, const TestContext& cont
     append<HeapAllocationErrorsTest>("readLine test 2", ReadLineTest2);
     append<HeapAllocationErrorsTest>("readLine test 3", ReadLineTest3);
     append<HeapAllocationErrorsTest>("readLine test 4", ReadLineTest4);
+    append<HeapAllocationErrorsTest>("readLine test 5", ReadLineTest5);
     append<HeapAllocationErrorsTest>("readAllLines test 1", ReadAllLinesTest1);
     append<HeapAllocationErrorsTest>("readAllLines test 2", ReadAllLinesTest2);
     append<HeapAllocationErrorsTest>("forEachLine test 1", ForEachLineTest1);
@@ -119,6 +120,25 @@ void CSVReaderTests::ReadLineTest4(Test& test)
     ISHIKO_TEST_FAIL_IF(error);
     ISHIKO_TEST_ABORT_IF_NEQ(line.size(), 1);
     ISHIKO_TEST_FAIL_IF_NEQ(line[0], "Title 1");
+    ISHIKO_TEST_PASS();
+}
+
+void CSVReaderTests::ReadLineTest5(Test& test)
+{
+    boost::filesystem::path inputPath = test.context().getDataPath("CSVReaderTests_ReadLineTest5.csv");
+
+    Error error;
+
+    CSVReader reader;
+    reader.open(inputPath, error);
+
+    ISHIKO_TEST_ABORT_IF(error);
+
+    std::vector<std::string> line = reader.readLine(error);
+
+    ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_ABORT_IF_NEQ(line.size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(line[0], "1,000");
     ISHIKO_TEST_PASS();
 }
 

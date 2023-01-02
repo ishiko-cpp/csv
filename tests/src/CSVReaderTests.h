@@ -1,11 +1,11 @@
 /*
-    Copyright (c) 2019-2022 Xavier Leclercq
+    Copyright (c) 2019-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/csv/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_CPP_CSV_TESTS_CSVREADERTESTS_H_
-#define _ISHIKO_CPP_CSV_TESTS_CSVREADERTESTS_H_
+#ifndef GUARD_ISHIKO_CPP_CSV_TESTS_CSVREADERTESTS_H
+#define GUARD_ISHIKO_CPP_CSV_TESTS_CSVREADERTESTS_H
 
 #include <Ishiko/TestFramework/Core.hpp>
 
@@ -21,6 +21,7 @@ private:
     static void ReadLineTest2(Ishiko::Test& test);
     static void ReadLineTest3(Ishiko::Test& test);
     static void ReadLineTest4(Ishiko::Test& test);
+    static void ReadLineTest5(Ishiko::Test& test);
     static void ReadAllLinesTest1(Ishiko::Test& test);
     static void ReadAllLinesTest2(Ishiko::Test& test);
     static void ForEachLineTest1(Ishiko::Test& test);
