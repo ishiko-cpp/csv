@@ -19,9 +19,9 @@ CSVReaderTests::CSVReaderTests(const TestNumber& number, const TestContext& cont
     append<HeapAllocationErrorsTest>("readLine test 1", ReadLineTest1);
     append<HeapAllocationErrorsTest>("readLine test 2", ReadLineTest2);
     append<HeapAllocationErrorsTest>("readLine test 3", ReadLineTest3);
-    append<HeapAllocationErrorsTest>("readLine test 4", ReadLineTest4);
     append<HeapAllocationErrorsTest>("readLine test 5", ReadLineTest5);
     append<HeapAllocationErrorsTest>("readLine test 6", ReadLineTest6);
+    append<HeapAllocationErrorsTest>("readLine test 7", ReadLineTest7);
     append<HeapAllocationErrorsTest>("readAllLines test 1", ReadAllLinesTest1);
     append<HeapAllocationErrorsTest>("readAllLines test 2", ReadAllLinesTest2);
     append<HeapAllocationErrorsTest>("forEachLine test 1", ForEachLineTest1);
@@ -105,9 +105,9 @@ void CSVReaderTests::ReadLineTest3(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void CSVReaderTests::ReadLineTest4(Test& test)
+void CSVReaderTests::ReadLineTest5(Test& test)
 {
-    boost::filesystem::path inputPath = test.context().getDataPath("CSVReaderTests_ReadLineTest4.csv");
+    boost::filesystem::path inputPath = test.context().getDataPath("CSVReaderTests_ReadLineTest5.csv");
 
     Error error;
 
@@ -126,9 +126,9 @@ void CSVReaderTests::ReadLineTest4(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void CSVReaderTests::ReadLineTest5(Test& test)
+void CSVReaderTests::ReadLineTest6(Test& test)
 {
-    boost::filesystem::path inputPath = test.context().getDataPath("CSVReaderTests_ReadLineTest5.csv");
+    boost::filesystem::path inputPath = test.context().getDataPath("CSVReaderTests_ReadLineTest6.csv");
 
     Error error;
 
@@ -145,9 +145,9 @@ void CSVReaderTests::ReadLineTest5(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void CSVReaderTests::ReadLineTest6(Test& test)
+void CSVReaderTests::ReadLineTest7(Test& test)
 {
-    boost::filesystem::path inputPath = test.context().getDataPath("CSVReaderTests_ReadLineTest6.csv");
+    boost::filesystem::path inputPath = test.context().getDataPath("CSVReaderTests_ReadLineTest7.csv");
 
     Error error;
 
