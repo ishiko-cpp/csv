@@ -42,10 +42,7 @@ std::vector<std::string> CSVReader::readLine(Error& error)
             }
             ++current_ptr;
         }
-        if (current_ptr != begin_ptr)
-        {
-            result.emplace_back(begin_ptr, current_ptr);
-        }
+        result.emplace_back(begin_ptr, current_ptr);
         for (std::string& item : result)
         {
             ASCII::Trim(item);

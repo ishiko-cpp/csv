@@ -21,6 +21,7 @@ CSVReaderTests::CSVReaderTests(const TestNumber& number, const TestContext& cont
     append<HeapAllocationErrorsTest>("readLine test 3", ReadLineTest3);
     append<HeapAllocationErrorsTest>("readLine test 4", ReadLineTest4);
     append<HeapAllocationErrorsTest>("readLine test 5", ReadLineTest5);
+    append<HeapAllocationErrorsTest>("readLine test 6", ReadLineTest6);
     append<HeapAllocationErrorsTest>("readAllLines test 1", ReadAllLinesTest1);
     append<HeapAllocationErrorsTest>("readAllLines test 2", ReadAllLinesTest2);
     append<HeapAllocationErrorsTest>("forEachLine test 1", ForEachLineTest1);
@@ -118,14 +119,35 @@ void CSVReaderTests::ReadLineTest4(Test& test)
     std::vector<std::string> line = reader.readLine(error);
 
     ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_ABORT_IF_NEQ(line.size(), 1);
+    ISHIKO_TEST_ABORT_IF_NEQ(line.size(), 3);
     ISHIKO_TEST_FAIL_IF_NEQ(line[0], "Title 1");
+    ISHIKO_TEST_FAIL_IF_NEQ(line[1], "Title 2");
+    ISHIKO_TEST_FAIL_IF_NEQ(line[2], "");
     ISHIKO_TEST_PASS();
 }
 
 void CSVReaderTests::ReadLineTest5(Test& test)
 {
     boost::filesystem::path inputPath = test.context().getDataPath("CSVReaderTests_ReadLineTest5.csv");
+
+    Error error;
+
+    CSVReader reader;
+    reader.open(inputPath, error);
+
+    ISHIKO_TEST_ABORT_IF(error);
+
+    std::vector<std::string> line = reader.readLine(error);
+
+    ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_ABORT_IF_NEQ(line.size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(line[0], "Title 1");
+    ISHIKO_TEST_PASS();
+}
+
+void CSVReaderTests::ReadLineTest6(Test& test)
+{
+    boost::filesystem::path inputPath = test.context().getDataPath("CSVReaderTests_ReadLineTest6.csv");
 
     Error error;
 

@@ -22,6 +22,7 @@ private:
     static void ReadLineTest3(Ishiko::Test& test);
     static void ReadLineTest4(Ishiko::Test& test);
     static void ReadLineTest5(Ishiko::Test& test);
+    static void ReadLineTest6(Ishiko::Test& test);
     static void ReadAllLinesTest1(Ishiko::Test& test);
     static void ReadAllLinesTest2(Ishiko::Test& test);
     static void ForEachLineTest1(Ishiko::Test& test);
