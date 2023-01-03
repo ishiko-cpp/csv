@@ -1,11 +1,11 @@
 /*
-    Copyright (c) 2019-2022 Xavier Leclercq
+    Copyright (c) 2019-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/csv/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_CPP_CSV_CSVREADER_HPP_
-#define _ISHIKO_CPP_CSV_CSVREADER_HPP_
+#ifndef GUARD_ISHIKO_CPP_CSV_CSVREADER_HPP
+#define GUARD_ISHIKO_CPP_CSV_CSVREADER_HPP
 
 #include <boost/filesystem/path.hpp>
 #include <Ishiko/Errors.hpp>
