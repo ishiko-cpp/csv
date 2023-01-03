@@ -26,6 +26,7 @@ private:
     static void ReadLineTest7(Ishiko::Test& test);
     static void ReadAllLinesTest1(Ishiko::Test& test);
     static void ReadAllLinesTest2(Ishiko::Test& test);
+    static void ReadAllLinesTest3(Ishiko::Test& test);
     static void ForEachLineTest1(Ishiko::Test& test);
 };
 
