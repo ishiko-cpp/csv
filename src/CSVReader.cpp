@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2019-2022 Xavier Leclercq
+    Copyright (c) 2019-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/csv/blob/main/LICENSE.txt
 */
@@ -25,7 +25,24 @@ std::vector<std::string> CSVReader::readLine(Error& error)
     std::string line = m_input.readLine(error);
     if (!error)
     {
-        result = ASCII::Split(line, ',', false);
+        const char* begin_ptr = line.c_str();
+        const char* current_ptr = begin_ptr;
+        bool in_quotes = false;
+        while (*current_ptr != 0)
+        {
+            char c = *current_ptr;
+            if (c == '"')
+            {
+                in_quotes = !in_quotes;
+            }
+            else if (!in_quotes && (c == ','))
+            {
+                result.emplace_back(begin_ptr, current_ptr);
+                begin_ptr = (current_ptr + 1);
+            }
+            ++current_ptr;
+        }
+        result.emplace_back(begin_ptr, current_ptr);
         for (std::string& item : result)
         {
             ASCII::Trim(item);
