@@ -2,9 +2,10 @@ ishikopath = envvar("ISHIKO_CPP_ROOT");
 import $(ishikopath)/csv/include/Ishiko/CSV.bkl;
 import $(ishikopath)/test-framework/include/Ishiko/TestFramework/Core.bkl;
 
-toolsets = gnu vs2019 vs2017 vs2015 vs2013;
+toolsets = gnu vs2022 vs2019 vs2017 vs2015 vs2013;
 
 gnu.makefile = ../gnumake/GNUmakefile;
+vs2022.solutionfile = ../vc17/IshikoCSVTests.sln;
 vs2019.solutionfile = ../vc16/IshikoCSVTests.sln;
 vs2017.solutionfile = ../vc15/IshikoCSVTests.sln;
 vs2015.solutionfile = ../vc14/IshikoCSVTests.sln;
