@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2019-2023 Xavier Leclercq
+    Copyright (c) 2019-2024 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/csv/blob/main/LICENSE.txt
 */
@@ -41,7 +41,7 @@ void CSVReader::forEachLine(Callable&& callback, Error& error)
         std::vector<std::string> line = readLine(readError);
         if (readError)
         {
-            if (readError.condition() != FileSystemErrorCategory::Value::end_of_file)
+            if (readError.code() != FileSystemErrorCategory::Value::end_of_file)
             {
                 error.fail(readError);
             }

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2019-2023 Xavier Leclercq
+    Copyright (c) 2019-2024 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/csv/blob/main/LICENSE.txt
 */
@@ -63,7 +63,7 @@ void CSVReaderTests::ReadLineTest1(Test& test)
     std::vector<std::string> line = reader.readLine(error);
 
     ISHIKO_TEST_FAIL_IF_NOT(error);
-    ISHIKO_TEST_FAIL_IF_NEQ(error.condition(), FileSystemErrorCategory::Value::end_of_file);
+    ISHIKO_TEST_FAIL_IF_NEQ(error.code(), FileSystemErrorCategory::Value::end_of_file);
     ISHIKO_TEST_FAIL_IF_NEQ(line.size(), 0);
     ISHIKO_TEST_PASS();
 }
