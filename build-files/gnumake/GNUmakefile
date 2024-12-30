@@ -42,6 +42,7 @@ endif
 #      ISHIKO_CPP_IO_ROOT            Path to the Ishiko/C++ IO installation
 #      ISHIKO_CPP_BOOST_ROOT         Path to the Boost installation
 #      ISHIKO_CPP_FILESYSTEM_ROOT    Path to the Ishiko/C++ FileSystem installation
+#      ISHIKO_CPP_FMT_ROOT           Path to the fmt installation
 #      ISHIKO_CPP_MEMORY_ROOT        Path to the Ishiko/C++ Memory installation
 #      ISHIKO_CPP_TEXT_ROOT          Path to the Ishiko/C++ Text installation
 
@@ -80,6 +81,8 @@ ISHIKO_CPP_IO_ROOT ?= $(ISHIKO_CPP_ROOT)/io
 ISHIKO_CPP_BOOST_ROOT ?= $(BOOST_ROOT)
 # Path to the Ishiko/C++ FileSystem installation
 ISHIKO_CPP_FILESYSTEM_ROOT ?= $(ISHIKO_CPP_ROOT)/filesystem
+# Path to the fmt installation
+ISHIKO_CPP_FMT_ROOT ?= $(FMT_ROOT)
 # Path to the Ishiko/C++ Memory installation
 ISHIKO_CPP_MEMORY_ROOT ?= $(ISHIKO_CPP_ROOT)/memory
 # Path to the Ishiko/C++ Text installation
@@ -94,7 +97,7 @@ all: ../bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),IshikoCSV-d,Is
 	$(RANLIB) $@
 
 $(_builddir)IshikoCSV_CSVReader.o: ../../src/CSVReader.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/Ishiko/CSV -std=c++11 ../../src/CSVReader.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_FMT_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/Ishiko/CSV -std=c++11 ../../src/CSVReader.cpp
 
 clean:
 	rm -f $(_builddir)*.o
